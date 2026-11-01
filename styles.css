@@ -54,3 +54,10 @@
   .hero .hero-map{width:100%;margin-left:0;height:auto;aspect-ratio:16/10}
   .hero .hero-map img{object-position:70% center}
 }
+
+/* V4: full U.S. + Africa map visible, blended naturally into the hero. */
+.hero-map{border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;overflow:visible!important;isolation:isolate!important;height:auto!important;aspect-ratio:1672 / 941;width:calc(100% + 64px);margin-left:-32px;pointer-events:none;mask-image:radial-gradient(ellipse 90% 85% at 50% 50%,#000 74%,rgba(0,0,0,.65) 91%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 90% 85% at 50% 50%,#000 74%,rgba(0,0,0,.65) 91%,transparent 100%)}
+.hero-map img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;filter:none!important}
+.hero-map::after{display:none!important}
+@media(max-width:1020px){.hero-map{width:calc(100% + 24px);margin-left:-12px}}
+@media(max-width:760px){.hero-map{width:100%;margin-left:0;aspect-ratio:1672 / 941}}
