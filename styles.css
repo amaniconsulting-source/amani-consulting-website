@@ -61,3 +61,11 @@
 .hero-map::after{display:none!important}
 @media(max-width:1020px){.hero-map{width:calc(100% + 24px);margin-left:-12px}}
 @media(max-width:760px){.hero-map{width:100%;margin-left:0;aspect-ratio:1672 / 941}}
+
+/* V5: luminous transparent map integrated seamlessly with the site's own navy background */
+.hero-layout{grid-template-columns:1.02fr .98fr;gap:0}
+.hero .hero-map{width:calc(100% + 180px)!important;margin-left:-35px!important;height:560px!important;aspect-ratio:auto!important;border:0!important;border-radius:0!important;box-shadow:none!important;overflow:visible!important;background:transparent!important;mask-image:none!important;-webkit-mask-image:none!important}
+.hero .hero-map img{width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;filter:none!important;mask-image:none!important;-webkit-mask-image:none!important}
+.hero .hero-map::after{display:none!important}
+@media(max-width:1020px){.hero-layout{grid-template-columns:1fr .94fr}.hero .hero-map{width:calc(100% + 90px)!important;margin-left:-20px!important;height:470px!important}}
+@media(max-width:760px){.hero-layout{grid-template-columns:1fr}.hero .hero-map{width:calc(100% + 36px)!important;margin-left:-18px!important;height:auto!important;aspect-ratio:1195 / 720!important;margin-top:0}}
