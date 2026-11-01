@@ -1,6 +1,6 @@
 const fr={
   topline:'États-Unis · République démocratique du Congo · Marchés émergents',
-  navExperience:'Expérience aux États-Unis',navServices:'Expertises',navWork:'Projets en RDC',navInnovation:'Innovation',navAbout:'À propos',navTalk:'Discutons ↗',navContact:'Contact',
+  navExperience:'Expérience aux États-Unis',navServices:'Expertises',navWork:'Projets au Congo (RDC)',navInnovation:'DaatLayer',navAbout:'À propos',navTalk:'Discutons',navContact:'Contact',
   heroEyebrow:'<span class="eyebrow-line"></span> CONSEIL TECHNOLOGIQUE · ÉTATS-UNIS ET AFRIQUE',
   heroTitle:'Expertise mondiale.<br><em>Impact local.</em><br>Cap sur l’avenir.',
   heroBody:'Nous concevons des plateformes e-commerce performantes, des logiciels sur mesure et des solutions alimentées par l’IA pour des organisations ambitieuses aux États-Unis et sur les marchés émergents.',
@@ -24,8 +24,11 @@ const fr={
 const els=[...document.querySelectorAll('[data-i18n]')];
 const original=Object.fromEntries(els.map(el=>[el.dataset.i18n,el.innerHTML]));
 let active='en';
-function setLanguage(lang){active=lang;document.documentElement.lang=lang;els.forEach(el=>{const key=el.dataset.i18n;el.innerHTML=lang==='fr'?(fr[key]??original[key]):original[key]});document.querySelector('#language').innerHTML=lang==='en'?'FR <span aria-hidden="true">↗</span>':'EN <span aria-hidden="true">↗</span>';document.querySelector('meta[name="description"]').content=lang==='fr'?'Conseil en commerce électronique, développement logiciel et intelligence artificielle aux États-Unis et sur les marchés émergents.':'Amani Consulting Group delivers enterprise digital commerce, custom software and intelligent technology solutions across the United States and emerging markets.';}
-document.querySelector('#language').addEventListener('click',()=>setLanguage(active==='en'?'fr':'en'));
+function setLanguage(lang){active=lang;document.documentElement.lang=lang;els.forEach(el=>{const key=el.dataset.i18n;el.innerHTML=lang==='fr'?(fr[key]??original[key]):original[key]});document.querySelectorAll('.language-option').forEach(button=>{const selected=button.dataset.lang===lang;button.classList.toggle('active',selected);button.setAttribute('aria-pressed',String(selected));});document.querySelector('meta[name="description"]').content=lang==='fr'?'Conseil en commerce électronique, développement logiciel et intelligence artificielle aux États-Unis et sur les marchés émergents.':'Amani Consulting Group delivers enterprise digital commerce, custom software and intelligent technology solutions across the United States and emerging markets.';}
+document.querySelectorAll('.language-option').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
+const sectionLinks=[...document.querySelectorAll('.desktop-nav a[href^="#"],.mobile-nav a[href^="#"]')];
+function updateActiveSection(){const ids=['about','experience','innovation','services','work'];let current='';for(const id of ids){const section=document.getElementById(id);if(section&&section.getBoundingClientRect().top<=160)current=id;}if(window.scrollY<170)current='';sectionLinks.forEach(link=>{const selected=link.getAttribute('href')==='#'+current;link.classList.toggle('is-active',selected);if(selected)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
+window.addEventListener('scroll',updateActiveSection,{passive:true});window.addEventListener('resize',updateActiveSection);window.addEventListener('hashchange',updateActiveSection);updateActiveSection();
 const menuButton=document.querySelector('#mobileMenu'),mobileNav=document.querySelector('#mobileNav');
 menuButton.addEventListener('click',()=>{const open=mobileNav.classList.toggle('open');menuButton.setAttribute('aria-expanded',String(open));menuButton.textContent=open?'×':'☰'});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mobileNav.classList.remove('open');menuButton.setAttribute('aria-expanded','false');menuButton.textContent='☰'}));
