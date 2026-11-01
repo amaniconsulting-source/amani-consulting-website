@@ -69,3 +69,7 @@
 .hero .hero-map::after{display:none!important}
 @media(max-width:1020px){.hero-layout{grid-template-columns:1fr .94fr}.hero .hero-map{width:calc(100% + 90px)!important;margin-left:-20px!important;height:470px!important}}
 @media(max-width:760px){.hero-layout{grid-template-columns:1fr}.hero .hero-map{width:calc(100% + 36px)!important;margin-left:-18px!important;height:auto!important;aspect-ratio:1195 / 720!important;margin-top:0}}
+
+/* V6 strategic positioning */
+.experience .disclaimer{max-width:660px;font-size:.82rem;line-height:1.75;color:#b4c9da}
+@media(min-width:1021px){.desktop-nav{gap:23px}.desktop-nav a{font-size:.78rem}}
